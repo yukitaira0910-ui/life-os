@@ -4,109 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Life OS</title>
-
 <link rel="manifest" href="manifest.json">
-
+<link rel="stylesheet" href="">
 <style>
-body{
-font-family: system-ui;
-background:#0f172a;
-color:white;
-margin:0;
-}
-.sidebar{
-width:220px;
-background:#020617;
-height:100vh;
-padding:20px;
-position:fixed;
-}
-.main{
-margin-left:240px;
-padding:20px;
-}
-button{
-background:#2563eb;
-color:white;
-border:none;
-padding:10px;
-border-radius:8px;
-}
-input{
-padding:10px;
-border-radius:8px;
-border:none;
-margin-right:8px;
-}
-.card{
-background:#020617;
-padding:16px;
-border-radius:12px;
-margin-bottom:12px;
-}
+body{margin:0;font-family:system-ui;background:#0f172a;color:white}
+.sidebar{width:240px;background:#020617;height:100vh;position:fixed;padding:20px}
+.main{margin-left:260px;padding:20px}
+.card{background:#020617;padding:16px;border-radius:12px;margin:10px 0}
+button{background:#2563eb;border:none;color:white;padding:8px 12px;border-radius:8px}
+input{padding:8px;border-radius:8px;border:none;margin-right:8px}
 </style>
 </head>
-
 <body>
 
 <div class="sidebar">
 <h2>Life OS</h2>
-<button onclick="show('tasks')">Tasks</button><br><br>
-<button onclick="show('goals')">Goals</button>
+<button onclick="showPage('tasks')">Tasks</button><br><br>
+<button onclick="showPage('goals')">Goals</button>
 </div>
 
 <div class="main">
 
 <div id="tasks">
 <h1>Tasks</h1>
+
 <input id="taskInput">
-<button onclick="addTask()">Add</button>
+<button onclick="addTask()">Add Task</button>
+
 <div id="taskList"></div>
+
+<h2>Habits</h2>
+<input id="habitInput">
+<button onclick="addHabit()">Add Habit</button>
+<div id="habitList"></div>
+
 </div>
 
 <div id="goals" style="display:none">
 <h1>Goals</h1>
+
 <input id="goalInput">
-<button onclick="addGoal()">Add</button>
+<button onclick="addGoal()">Add Goal</button>
+
 <div id="goalList"></div>
-</div>
 
 </div>
 
-<script>
-let tasks=[]
-let goals=[]
+</div>
 
-function show(page){
-document.getElementById("tasks").style.display="none"
-document.getElementById("goals").style.display="none"
-document.getElementById(page).style.display="block"
-}
-
-function addTask(){
-let v=taskInput.value
-tasks.push(v)
-renderTasks()
-}
-
-function renderTasks(){
-taskList.innerHTML=tasks.map(t=>
-`<div class="card">${t}</div>`
-).join("")
-}
-
-function addGoal(){
-let v=goalInput.value
-goals.push(v)
-renderGoals()
-}
-
-function renderGoals(){
-goalList.innerHTML=goals.map(t=>
-`<div class="card">${t}</div>`
-).join("")
-}
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
